@@ -10,6 +10,7 @@ import com.googlecode.objectify.cmd.SimpleQuery;
 import javax.jdo.annotations.Embedded;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Cache
@@ -50,7 +51,6 @@ public class GolfCourse {
 
     // course url
     private String homepage_url;
-
 
     // List of golfholes from tee
     @Embedded
@@ -218,6 +218,16 @@ public class GolfCourse {
         }
 
         throw new NotFoundException(Key.create(GolfCourse.class,Long.toString(id)));
+    }
+
+    public static List<GolfCourse> getAllStartsWith(String search_str) throws NotFoundException {
+        List<GolfCourse> result;
+        Query<GolfCourse> query = OfyService.ofy().load().type(GolfCourse.class).filter("name >=", search_str).filter("name <", search_str + "\ufffd");
+        if (query != null && query.count() > 0){
+            result = query.list();
+            return result;
+        }
+        throw new NotFoundException(Key.create(GolfCourse.class, "No Courses starting with " + search_str + " in Database"));
     }
 
     public static int getShotsGiven(double handicap, int gSlope, double gValue, int gPar){

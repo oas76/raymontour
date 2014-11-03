@@ -5,10 +5,7 @@ import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.NotFoundException;
-import com.oas76.raymontour.CourseList;
-import com.oas76.raymontour.GolfCourse;
-import com.oas76.raymontour.GolfHole;
-import com.oas76.raymontour.Result;
+import com.oas76.raymontour.*;
 
 
 import javax.inject.Named;
@@ -53,7 +50,7 @@ public class GolfCourseApi {
 
         List<GolfCourse> response;
         try{
-            response = CourseList.getAllStartsWith(search_str);
+            response = GolfCourse.getAllStartsWith(search_str);
         }
         catch (Exception e){
             e.printStackTrace();
