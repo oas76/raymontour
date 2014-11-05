@@ -163,13 +163,13 @@ public class GolfPlayer {
     }
 
     public static List<GolfPlayer> getAllEmailStartsWith(String search_str) throws NotFoundException {
-        List<GolfPlayer> result;
+        List<GolfPlayer> result = null;
         Query<GolfPlayer> query = OfyService.ofy().load().type(GolfPlayer.class).filter("email >=", search_str).filter("email <", search_str + "\ufffd");
         if (query != null && query.count() > 0){
             result = query.list();
-            return result;
+
         }
-        throw new NotFoundException(Key.create(GolfPlayer.class, "No Player email starting with " + search_str + " in Database"));
+        return result;
     }
 
     public static GolfPlayer getById(long id) throws NotFoundException {

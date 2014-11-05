@@ -45,7 +45,6 @@ public class GolfPlayerTest {
     public void tearDown() throws Exception {
         player = null;
         helper.tearDown();
-        //session.close();
         assertEquals(player,null);
     }
 
@@ -129,20 +128,18 @@ public class GolfPlayerTest {
                 assertEquals(players.size(),1);
                 assertEquals(id,players.listIterator().next().getId(),0.0000d);
 
+                GolfPlayer player1 = GolfPlayer.getById(id);
+                assertEquals(player1.getId(),id,0.0000d);
+
                 player.delete();
+                players = GolfPlayer.getAllEmailStartsWith("new");
+                assertEquals(players,null);
+
             }
         });
     }
 
-    @org.junit.Test
-    public void testDelete() throws Exception {
 
-    }
-
-    @org.junit.Test
-    public void testGetAllEmailStartsWith() throws Exception {
-
-    }
 
     @org.junit.Test
     public void testGetById() throws Exception {

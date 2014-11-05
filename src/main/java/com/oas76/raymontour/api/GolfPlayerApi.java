@@ -45,9 +45,10 @@ public class GolfPlayerApi {
         }
         return response;
     }
+    /*
 
     @ApiMethod(name = "getMyBuddies")
-    public Set<String> getMyBuddies(@Named("id") long id, User user) throws com.google.api.server.spi.response.NotFoundException{
+    public Set<String> getMyBuddies(@Named("myid") long id, User user) throws com.google.api.server.spi.response.NotFoundException{
         ApiUseLogger.logUse(user,"getMyBuddies");
 
         Set<String> response;
@@ -63,7 +64,7 @@ public class GolfPlayerApi {
     }
 
     @ApiMethod(name = "getMyFavouriteCourse")
-    public Set<String> getFavCourse(@Named("id") long id, User user) throws com.google.api.server.spi.response.NotFoundException{
+    public Set<String> getFavCourse(@Named("myid") long id, User user) throws com.google.api.server.spi.response.NotFoundException{
         ApiUseLogger.logUse(user,"getMyFavouriteCourse");
 
         Set<String> response;
@@ -77,6 +78,7 @@ public class GolfPlayerApi {
         }
         return response;
     }
+    */
 
 
 
